@@ -1,0 +1,91 @@
+@import '../dow-theme/dow-color-palette.scss';
+
+$color-neo: map-get($mat-dow-slate-grey, 50);
+$border-width-button: 5px;
+	
+button {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  background: lighten($color-neo, 1%);
+  border: solid $border-width-button transparent;
+  background-clip: padding-box;
+  border-radius: 2em;
+  margin: 1.5rem;
+  box-shadow:
+    -3px -3px 7px 2px lighten($color-neo, 10%),
+    3px 3px 7px 2px darken($color-neo, 12%);
+  
+  animation: depress 75ms linear;
+  
+  i {
+    color: lighten($color-neo, 20%);
+    text-shadow:
+      -1px -1px darken($color-neo, 15%),
+      1px 1px lighten($color-neo, 15%);
+  }
+
+  &[color="primary"] {
+    color: white;
+    background-color: map-get($mat-dow-slate-grey, 500);
+    border: 5px solid $color-neo;
+  }
+  
+  &.active {
+    
+  }
+  
+  &:active {
+    animation: press 50ms linear;
+    animation-fill-mode: forwards;
+  }
+  
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0; right: 0; bottom: 0; left: 0;
+    margin: -$border-width-button;
+    border: 1px solid lighten($color-neo, 2%);
+    border-radius: inherit;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: 0; right: 0; bottom: 0; left: 0;
+    margin: -$border-width-button;
+    border-radius: inherit;
+    background: 
+      linear-gradient(
+        -30deg,
+        lighten($color-neo, 2%) 0%,
+        darken($color-neo, 2%) 100%
+      );
+  }
+}
+
+@keyframes press {
+	100% {
+		box-shadow:
+			-1px -1px 10px 2px darken($color-neo, 7%),
+			3px 3px 10px 3px lighten($color-neo, 4%);
+	}
+}
+@keyframes depress {
+	0% {
+		box-shadow:
+			-1px -1px 10px 2px darken($color-neo, 7%),
+			3px 3px 10px 3px lighten($color-neo, 4%);
+	}
+	100% {
+		box-shadow:
+			7px 7px 20px 5px darken($color-neo, 8%),
+			-3px -3px 20px 3px lighten($color-neo, 12%);
+	}
+}
+
+// bla
+* { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+button { outline: none; border: none; background: none; }

@@ -1,0 +1,26 @@
+//Body
+
+body {
+    font-family: Roboto;
+    font-weight: inherit;
+    background-color: mat-color($primary, 50);
+}
+html, body, app-root, mat-sidenav-container, .content-area {
+    margin: 0;
+    width: 100%;
+}
+
+html, body, app-root, .content-area {
+    height: 100%;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    mat-sidenav-container {
+        flex: 1 1 0%;
+    }
+}

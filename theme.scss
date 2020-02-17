@@ -1,0 +1,64 @@
+@import 'dow-theme/dow-color-palette.scss';
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$primary: mat-palette($mat-dow-slate-grey, 700);
+$accent: mat-palette($mat-dow-tan, 100);
+$theme: mat-light-theme($primary, $accent);
+
+// the standard accent shade is too light for some components.
+// use a darker shade for the these.
+$light-primary: mat-palette($mat-dow-slate-grey, 500);
+//$dark-accent: mat-palette($mat-dow-tan, 700);
+$lighter-theme: mat-light-theme($light-primary, $accent);
+
+$gold-palette: mat-palette($mat-dow-gold, 700);
+$gold-theme: mat-light-theme($primary, $gold-palette);
+
+// $sage-accent: mat-palette($mat-dow-sage, 400);
+
+// $loading-theme:  mat-light-theme($primary, $sage-accent);
+
+$green-palette: mat-palette($mat-green, 800);
+$yellow-palette: mat-palette($mat-yellow, 800);
+$amber-palette: mat-palette($mat-amber, 600);
+$red-palette: mat-palette($mat-red, 800);
+
+$indicator-theme: mat-light-theme($red-palette, $yellow-palette);
+
+$blue-primary: mat-palette($mat-dow-blue, 900);
+//default is 300, but that isn't that good for buttons
+$blue-accent: mat-palette($mat-dow-teal, 600);
+$blue-theme: mat-light-theme($blue-primary, $blue-accent);
+
+@include angular-material-theme($theme);
+
+// some components need a darker theme
+@include mat-checkbox-theme($gold-theme);
+@include mat-radio-theme($gold-theme);
+@include mat-progress-bar-theme($gold-theme);
+@include mat-progress-spinner-theme($gold-theme);
+@include mat-slider-theme($gold-theme);
+@include mat-slide-toggle-theme($gold-theme);
+
+.secondary-header {
+  @include mat-toolbar-theme($lighter-theme);
+}
+.indicator-badges {
+  @include mat-badge-theme($indicator-theme);
+}
+
+.blue-buttons {
+  @include mat-button-theme($blue-theme);
+}
+
+.mat-standard-chip {
+  &.mat-chip {
+    border-radius: 4px;
+    background-color: mat-color($blue-accent, 50);
+  }
+}
+
+// Dow Theme Individual Component Overrides below
+@import 'dow-theme/dow-custom-component-themes.scss';

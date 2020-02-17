@@ -1,0 +1,32 @@
+//Toolbar Component
+.mat-toolbar.dmc-header {
+    box-shadow: 0 2px 18px 0 rgba(0,0,0,0.18);
+    height: 75px;
+    position: relative;
+    z-index: 998;
+    //999 is the menu button
+    //1000 is modals, so we cannot go over that
+
+    &:before {
+        content: '';
+        width: 115px;
+        height: 75px;
+        margin-left: 40px;
+        background: url('~/assets/dow-logo.png') center center no-repeat;
+        background-size: contain;
+        margin-right: 84px;
+        @media (max-width: 1024px) {
+            display: none;
+        }
+    }
+
+    &.mat-primary {
+        background-color: white;
+        color: $black-87-opacity;
+    }
+    
+    &.mat-accent {
+        background-color: mat-color($mat-dow-slate-grey, 500);
+        color: $white-87-opacity;
+    }
+}
