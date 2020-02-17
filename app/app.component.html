@@ -2,7 +2,6 @@
   <span>Angular Material Meets Neomorphism</span>
 </mat-toolbar>
 
-
 <mat-tab-group>
   <mat-tab label="Form">
     <mat-form-field>
@@ -29,9 +28,17 @@
       <button mat-raised-button color="accent">Accent</button>
       <button mat-raised-button color="warn">Warn</button>
       <button mat-raised-button disabled>Disabled</button>
-      <a mat-raised-button routerLink=".">Link</a>
+      <br/><br/>
+    </div>
+    <div>
+      No ripple
+      <button mat-raised-button [disableRipple]="true">No Color Attr</button>
+      <button mat-raised-button color="primary" [disableRipple]="true">Primary</button>
+      <button mat-raised-button color="accent" [disableRipple]="true">Accent</button>
+      <button mat-raised-button color="warn" [disableRipple]="true">Warn</button>
+      <button mat-raised-button disabled>Disabled</button>
       <br/><br/>
     </div>
   </mat-tab>
-  
+
 </mat-tab-group>

@@ -2,6 +2,7 @@
 
 $color-neo: mat-color($primary, 50);
 $border-width-button: 5px;
+$border-radius: 2em;
 $transition-timing: 50ms;
 
 @function theme($theme) {
@@ -23,10 +24,15 @@ $transition-timing: 50ms;
           2px 2px 4px 1px darken($color-neo, 13%);
     }
   }
-  @else {
+  @else if ($direction == in) {
     box-shadow:
-      -1px -1px 2px lighten($color-neo, 7%) inset,
-      1px 1px 4px darken($color-neo, 12%) inset;
+      1px 1px 4px darken($color-neo, 15%) inset,
+      -1px -1px 3px 1px lighten($color-neo, 17%) inset;
+  }
+  @else if ($direction == in-focused) {
+    box-shadow:
+      -1px -1px 2px lighten($color-neo, 20%) inset,
+      0.5px 0.5px 1px darken($color-neo, 30%) inset;
   }
 }
 
@@ -35,9 +41,9 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
   position: relative;
   cursor: pointer;
   background: lighten($color-neo, 1%);
-  border-radius: 2em;
+  border-radius: $border-radius;
   margin: 1.5rem;
-  animation: depress $transition-timing linear;
+  animation: button-depress $transition-timing linear;
   @include neo-shadow();
 
   &[disabled] {
@@ -48,18 +54,13 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
   &:active {
     &:not([disabled]) {
       @include neo-shadow();
-      animation: press $transition-timing*2.5 linear;
+      animation: button-press $transition-timing linear;
       animation-fill-mode: forwards;
 
       &::before {
         opacity: 1;
         transition-delay: $transition-timing;
       }
-    }
-
-    > * {
-      animation: none;
-      transition: none;
     }
   }
 
@@ -102,20 +103,47 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
   }
 }
 
-@keyframes press {
+::ng-deep .mat-form-field {
+  &-underline {
+    opacity: 0;
+  }
+
+  &-label {
+    margin-left: 10px;
+  }
+
+  &-appearance-legacy &-infix {
+    padding-bottom: 0; // Padding is added to the input for the neo shadow
+  }
+
+  &.mat-focused {
+    input {
+      border-radius: $border-radius/3;
+      @include neo-shadow(in-focused);
+    }
+  }
+}
+input {
+  padding: 10px;
+  border-radius: $border-radius;
+  transition: all $transition-timing*3 ease-in;
+  @include neo-shadow(in);
+}
+
+@keyframes button-press {
   0% {
     @include neo-shadow();
   }
   70% {
     box-shadow:
-      0px 0px 2px lighten($color-neo, 50%),
-      -1px -1px 2px darken($color-neo, 25%);
+      0px 0px 2px lighten($color-neo, 30%),
+      -1px -1px 2px darken($color-neo, 30%);
   }
 	100% {
 		box-shadow: none;
 	}
 }
-@keyframes depress {
+@keyframes button-depress {
 	0% {
 		box-shadow: none;
 	}
