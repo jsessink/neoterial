@@ -1,13 +1,12 @@
-@import '../dow-theme/dow-color-palette';
 @import '../theme';
-
-@function theme($theme) {
-  @return mat-color($theme, default);
-}
 
 $color-neo: mat-color($primary, 50);
 $border-width-button: 5px;
 $transition-timing: 50ms;
+
+@function theme($theme) {
+  @return mat-color($theme, default);
+}
 
 @mixin neo-shadow($direction: out, $color-inset: null, $color-base: $color-neo) {
   @if ($direction == out) {
@@ -29,7 +28,7 @@ $transition-timing: 50ms;
       -1px -1px 2px lighten($color-neo, 7%) inset,
       1px 1px 4px darken($color-neo, 12%) inset;
   }
-}	
+}
 
 button.mat-raised-button:not([class*='mat-elevation-z']) {
   display: block;
