@@ -2,7 +2,22 @@
 
 $color-neo: map-get($mat-dow-slate-grey, 50);
 $border-width-button: 5px;
-	
+
+@mixin neo-shadow($color-inset: null, $color-base: $color-neo) {
+  @if ($color-inset) {
+    box-shadow:
+        -3px -3px 7px 2px lighten($color-base, 10%),
+        3px 3px 7px 2px darken($color-base, 12%),
+        -1px -1px 1px 0px lighten($color-inset, 3%) inset,
+        1px 1px 1px 1px darken($color-inset, 2%) inset;
+  }
+  @else {
+    box-shadow:
+        -3px -3px 7px 2px lighten($color-neo, 10%),
+        3px 3px 7px 2px darken($color-neo, 12%);
+  }
+}	
+
 button {
   display: block;
   position: relative;
@@ -12,9 +27,7 @@ button {
   background-clip: padding-box;
   border-radius: 2em;
   margin: 1.5rem;
-  box-shadow:
-    -3px -3px 7px 2px lighten($color-neo, 10%),
-    3px 3px 7px 2px darken($color-neo, 12%);
+  @include neo-shadow();
   
   animation: depress 75ms linear;
   
@@ -29,6 +42,7 @@ button {
     color: white;
     background-color: map-get($mat-dow-slate-grey, 500);
     border: 5px solid $color-neo;
+    @include neo-shadow(map-get($mat-dow-slate-grey, 500));
   }
   
   &.active {
