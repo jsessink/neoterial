@@ -5,7 +5,8 @@
 
 $primary: mat-palette($mat-dow-slate-grey, 700);
 $accent: mat-palette($mat-dow-tan, 100);
-$theme: mat-light-theme($primary, $accent);
+$warn: mat-palette($mat-dow-gold, 100);
+$theme: mat-light-theme($primary, $accent, $warn);
 
 // the standard accent shade is too light for some components.
 // use a darker shade for the these.

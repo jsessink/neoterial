@@ -1,6 +1,10 @@
 @import '../dow-theme/dow-color-palette';
 @import '../theme';
 
+// @function theme-getter($theme) {
+//   @return mat-color($theme, default);
+// }
+
 $color-neo: mat-color($primary, 50);
 $border-width-button: 5px;
 
@@ -31,30 +35,41 @@ button {
   @include neo-shadow();
   animation: depress 75ms linear;
 
+  &[disabled] {
+    animation: none;
+  }
+
+  &[color="primary"],
+  &[color="accent"],
+  &[color="warn"] {
+    border: 5px solid $color-neo;
+    ::ng-deep > span { color: white; }
+  }
 
   &[color="primary"] {
-    > span.mat-button-wrapper { color: white; }
     background-color: mat-color($primary, default);
-    border: 5px solid $color-neo;
     @include neo-shadow(mat-color($primary, default));
   }
 
   &[color="accent"] {
-    color: white;
     background-color: mat-color($accent, default);
-    border: 5px solid $color-neo;
     @include neo-shadow(mat-color($accent, default));
   }
   
-  &.active {
-    
+  &[color="warn"] {
+    // background-color:;
+    // @include neo-shadow(theme-getter($primary));
   }
   
   &:active {
     animation: press 50ms linear;
     animation-fill-mode: forwards;
+
+    &[disabled] {
+      animation: none;
+    }
   }
-  
+
   &:before {
     content: '';
     position: absolute;
