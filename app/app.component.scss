@@ -1,6 +1,7 @@
-@import '../dow-theme/dow-color-palette.scss';
+@import '../dow-theme/dow-color-palette';
+@import '../theme';
 
-$color-neo: map-get($mat-dow-slate-grey, 50);
+$color-neo: mat-color($primary, 50);
 $border-width-button: 5px;
 
 @mixin neo-shadow($color-inset: null, $color-base: $color-neo) {
@@ -28,21 +29,21 @@ button {
   border-radius: 2em;
   margin: 1.5rem;
   @include neo-shadow();
-  
   animation: depress 75ms linear;
-  
-  i {
-    color: lighten($color-neo, 20%);
-    text-shadow:
-      -1px -1px darken($color-neo, 15%),
-      1px 1px lighten($color-neo, 15%);
-  }
+
 
   &[color="primary"] {
-    color: white;
-    background-color: map-get($mat-dow-slate-grey, 500);
+    > span.mat-button-wrapper { color: white; }
+    background-color: mat-color($primary, default);
     border: 5px solid $color-neo;
-    @include neo-shadow(map-get($mat-dow-slate-grey, 500));
+    @include neo-shadow(mat-color($primary, default));
+  }
+
+  &[color="accent"] {
+    color: white;
+    background-color: mat-color($accent, default);
+    border: 5px solid $color-neo;
+    @include neo-shadow(mat-color($accent, default));
   }
   
   &.active {
