@@ -111,23 +111,23 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
     opacity: 0;
   }
 
-  & &-appearance-legacy &-label {
+  &-appearance-legacy &-label {
     padding-top: 0.56em;
     margin-left: 10px;
     animation: label-move-blur $transition-timing*5 ease-out;
   }
 
-  & &-appearance-legacy &-infix {
+  &-appearance-legacy &-infix {
     padding-bottom: 0; // Padding is added to the input for the neo shadow
   }
 
-  & &-should-float {
+  &-should-float {
     .mat-form-field-label-wrapper {
       top: -1em;
     }
   }
 
-  & &.mat-focused {
+  &.mat-focused {
     input {
       background-color: lighten($color-neo-lowered, 1%);
       border-radius: $border-radius/3;
@@ -150,8 +150,7 @@ input {
 
 // Radio
 ::ng-deep .mat-radio {
-
-  & &-container {
+  &-button &-container {
     border-radius: 100%;
     padding: 1em;
     @include neo-shadow();
@@ -169,7 +168,7 @@ input {
     }
   }
 
-  & &-checked {
+  &-checked {
     .mat-radio-container {
       background-color: $color-neo-lowered;
       @include neo-shadow(in);
@@ -180,7 +179,7 @@ input {
 // Checkbox
 ::ng-deep .mat-checkbox {
   $checkbox-size-adjustment: 8px;
-
+  
   & &-inner-container {
     padding: $checkbox-size-adjustment;
     @include neo-shadow();
@@ -197,6 +196,10 @@ input {
 
   & &-layout {
     align-items: center;
+  }
+
+  &-checked {
+    background: blue; // TODO: after lunch
   }
 }
 
