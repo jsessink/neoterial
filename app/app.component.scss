@@ -28,7 +28,7 @@ $transition-timing: 50ms;
   }
   @else if ($direction == in) {
     box-shadow:
-      1px 1px 4px darken($color-neo, 15%) inset,
+      1px 1px 4px darken($color-neo, 20%) inset,
       -1px -1px 3px 1px lighten($color-neo, 17%) inset;
   }
   @else if ($direction == in-focused) {
@@ -112,11 +112,17 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
   &-appearance-legacy &-label {
     padding-top: 0.56em;
     margin-left: 10px;
-    animation: label-move-blur $transition-timing*2 ease-out;
+    animation: label-move-blur $transition-timing*5 ease-out;
   }
 
   &-appearance-legacy &-infix {
     padding-bottom: 0; // Padding is added to the input for the neo shadow
+  }
+
+  &-should-float {
+    .mat-form-field-label-wrapper {
+      top: -1em;
+    }
   }
 
   &.mat-focused {
@@ -127,7 +133,7 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
     }
 
     .mat-form-field-label {
-      animation: label-move-focus $transition-timing*2 ease-in $transition-timing;
+      animation: label-move-focus $transition-timing*5 ease-in $transition-timing;
       animation-fill-mode: forwards;
     }
   }
@@ -136,8 +142,31 @@ input {
   background-color: $color-neo-lowered;
   padding: 10px;
   border-radius: $border-radius;
-  transition: all $transition-timing*3 ease-in;
+  transition: all $transition-timing*4 ease-out;
   @include neo-shadow(in);
+}
+
+::ng-deep .mat-radio-button {
+
+  .mat-radio-container {
+    border-radius: 100%;
+    padding: 1em;
+    @include neo-shadow();
+
+    .mat-radio-outer-circle,
+    .mat-radio-inner-circle {
+      top: 50%;
+      left: 50%;
+      margin-top: -10px;
+      margin-left: -10px;
+    }
+  }
+
+  &.mat-radio-checked {
+    .mat-radio-container {
+      @include neo-shadow(in);
+    }
+  }
 }
 
 @keyframes button-press {
@@ -175,8 +204,8 @@ input {
    }
 }
 
+
 // DO NOT COPY OVER
-::ng-deep .mat-tab-body,
-button {
-  margin: 0.75rem 1.5rem;
-}
+::ng-deep .mat-tab-body { margin: 0; }
+::ng-deep .mat-tab-body-content { padding: 0.75rem; }
+button { margin: 0.5em; }

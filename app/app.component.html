@@ -5,19 +5,32 @@
 <mat-tab-group>
   <mat-tab label="Form">
     <mat-form-field>
-      <input matInput placeholder="Some Input" value="Alrighty">
+      <input matInput placeholder="Some Input" value="Aaaalllrighty Then">
     </mat-form-field>
+
+    <br/><br/>
 
     <div>
       <mat-radio-group>
-        <mat-radio-button value="1">Option 1</mat-radio-button>&nbsp;
-        <mat-radio-button value="2">Option 2</mat-radio-button>
+        <mat-radio-button value="1">Optionie uno</mat-radio-button><br/><br/>
+        <mat-radio-button value="2">Optionie dos equis</mat-radio-button>
       </mat-radio-group>
-      <br/><br/>
     </div>
 
+    <br/><br/>
+
     <div>
-      <mat-checkbox>Checked</mat-checkbox>
+      No Ripple<br/><br/>
+      <mat-radio-group>
+        <mat-radio-button value="1" [disableRipple]="true">Optionie uno</mat-radio-button><br/><br/>
+        <mat-radio-button value="2" [disableRipple]="true">Optionie dos equis</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <br/><br/>
+
+    <div>
+      <mat-checkbox>Checkborx</mat-checkbox>
     </div>
   </mat-tab>
 
