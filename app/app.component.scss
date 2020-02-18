@@ -38,6 +38,7 @@ $transition-timing: 50ms;
   }
 }
 
+// Button
 button.mat-raised-button:not([class*='mat-elevation-z']) {
   display: block;
   position: relative;
@@ -104,28 +105,29 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
   }
 }
 
+// Text Input
 ::ng-deep .mat-form-field {
-  &-underline {
+  & &-underline {
     opacity: 0;
   }
 
-  &-appearance-legacy &-label {
+  & &-appearance-legacy &-label {
     padding-top: 0.56em;
     margin-left: 10px;
     animation: label-move-blur $transition-timing*5 ease-out;
   }
 
-  &-appearance-legacy &-infix {
+  & &-appearance-legacy &-infix {
     padding-bottom: 0; // Padding is added to the input for the neo shadow
   }
 
-  &-should-float {
+  & &-should-float {
     .mat-form-field-label-wrapper {
       top: -1em;
     }
   }
 
-  &.mat-focused {
+  & &.mat-focused {
     input {
       background-color: lighten($color-neo-lowered, 1%);
       border-radius: $border-radius/3;
@@ -146,9 +148,10 @@ input {
   @include neo-shadow(in);
 }
 
-::ng-deep .mat-radio-button {
+// Radio
+::ng-deep .mat-radio {
 
-  .mat-radio-container {
+  & &-container {
     border-radius: 100%;
     padding: 1em;
     @include neo-shadow();
@@ -160,15 +163,44 @@ input {
       margin-top: -10px;
       margin-left: -10px;
     }
+
+    .mat-radio-outer-circle {
+      transform: matrix(0.75, 0, 0, 0.75, 0, 0);
+    }
   }
 
-  &.mat-radio-checked {
+  & &-checked {
     .mat-radio-container {
+      background-color: $color-neo-lowered;
       @include neo-shadow(in);
     }
   }
 }
 
+// Checkbox
+::ng-deep .mat-checkbox {
+  $checkbox-size-adjustment: 8px;
+
+  & &-inner-container {
+    padding: $checkbox-size-adjustment;
+    @include neo-shadow();
+  }
+
+  & &-frame {
+    margin: $checkbox-size-adjustment;
+  }
+
+  & &-background {
+    padding: $checkbox-size-adjustment;
+    margin: $checkbox-size-adjustment;
+  }
+
+  & &-layout {
+    align-items: center;
+  }
+}
+
+// Animations
 @keyframes button-press {
   0% {
     @include neo-shadow();
