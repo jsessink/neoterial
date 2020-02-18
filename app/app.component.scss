@@ -2,7 +2,7 @@
 
 $color-neo: mat-color($primary, 50);
 $color-neo-raised: lighten($color-neo, 1%);
-$color-neo-lowered: darken($color-neo, 1%);
+$color-neo-lowered: darken($color-neo, 2%);
 $border-width-button: 5px;
 $border-radius: 2em;
 $transition-timing: 50ms;
@@ -44,7 +44,6 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
   cursor: pointer;
   background: $color-neo-raised;
   border-radius: $border-radius;
-  margin: 1.5rem;
   animation: button-depress $transition-timing linear;
   @include neo-shadow();
 
@@ -110,8 +109,10 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
     opacity: 0;
   }
 
-  &-label {
+  &-appearance-legacy &-label {
+    padding-top: 0.56em;
     margin-left: 10px;
+    animation: label-move-blur $transition-timing*2 ease-out;
   }
 
   &-appearance-legacy &-infix {
@@ -120,13 +121,19 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
 
   &.mat-focused {
     input {
+      background-color: lighten($color-neo-lowered, 1%);
       border-radius: $border-radius/3;
       @include neo-shadow(in-focused);
+    }
+
+    .mat-form-field-label {
+      animation: label-move-focus $transition-timing*2 ease-in $transition-timing;
+      animation-fill-mode: forwards;
     }
   }
 }
 input {
-  background: $color-neo-lowered;
+  background-color: $color-neo-lowered;
   padding: 10px;
   border-radius: $border-radius;
   transition: all $transition-timing*3 ease-in;
@@ -153,4 +160,23 @@ input {
 	100% {
 		@include neo-shadow();
 	}
+}
+@keyframes label-move-blur {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: 10px;
+  }
+}
+@keyframes label-move-focus {
+   100% {
+     margin-left: 0;
+   }
+}
+
+// DO NOT COPY OVER
+::ng-deep .mat-tab-body,
+button {
+  margin: 0.75rem 1.5rem;
 }
