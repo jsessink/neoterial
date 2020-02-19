@@ -12,8 +12,8 @@
 
     <div>
       <mat-radio-group>
-        <mat-radio-button value="1">Optionie uno</mat-radio-button><br/><br/>
-        <mat-radio-button value="2">Optionie dos equis</mat-radio-button>
+        <mat-radio-button value="1" color="primary">Optionie uno</mat-radio-button><br/><br/>
+        <mat-radio-button value="2" color="primary">Optionie dos equis</mat-radio-button>
       </mat-radio-group>
     </div>
 
@@ -22,18 +22,18 @@
     <div>
       No Ripple<br/><br/>
       <mat-radio-group>
-        <mat-radio-button value="1" [disableRipple]="true">Optionie uno</mat-radio-button><br/><br/>
-        <mat-radio-button value="2" [disableRipple]="true">Optionie dos equis</mat-radio-button>
+        <mat-radio-button value="1" [disableRipple]="true" color="primary">Optionie uno</mat-radio-button><br/><br/>
+        <mat-radio-button value="2" [disableRipple]="true" color="primary">Optionie dos equis</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <br/><br/><br/>
 
     <div>
-      <mat-checkbox>Checkborx</mat-checkbox>
+      <mat-checkbox color="primary">Checkborx</mat-checkbox>
       <br/><br/><br/>
       No Ripple<br/><br/>
-      <mat-checkbox [disableRipple]="true">Checkborx</mat-checkbox>
+      <mat-checkbox color="primary" [disableRipple]="true">Checkborx</mat-checkbox>
     </div>
   </mat-tab>
 
@@ -54,6 +54,17 @@
       <button mat-raised-button color="warn" [disableRipple]="true">Warn</button>
       <button mat-raised-button disabled>Disabled</button>
       <br/><br/>
+    </div>
+    <div>
+      <h4>Basic mat-select</h4>
+      <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let food of foods; let x=$index">
+            Gooooood {{ index }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </mat-tab>
 
