@@ -5,7 +5,8 @@ $color-neo-raised: lighten($color-neo, 1%);
 $color-neo-lowered: darken($color-neo, 2%);
 $border-width-button: 5px;
 $border-radius: 2em;
-$transition-timing: 50ms;
+$transition-button-timing: 50ms;
+$transition-selection-timing: $transition-button-timing*2;
 
 @function theme($theme) {
   @return mat-color($theme, default);
@@ -45,7 +46,7 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
   cursor: pointer;
   background: $color-neo-raised;
   border-radius: $border-radius;
-  animation: button-depress $transition-timing linear;
+  animation: button-depress $transition-button-timing;
   @include neo-shadow();
 
   &[disabled] {
@@ -56,12 +57,12 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
   &:active {
     &:not([disabled]) {
       @include neo-shadow();
-      animation: button-press $transition-timing linear;
+      animation: button-press $transition-button-timing;
       animation-fill-mode: forwards;
 
       &::before {
         opacity: 1;
-        transition-delay: $transition-timing;
+        transition-delay: $transition-button-timing;
       }
     }
   }
@@ -94,7 +95,7 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
 
   &::before {
     opacity: 0;
-    transition: opacity $transition-timing linear;
+    transition: opacity $transition-button-timing;
     content: '';
     position: absolute;
     z-index: -1;
@@ -114,7 +115,7 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
   &-appearance-legacy &-label {
     padding-top: 0.56em;
     margin-left: 10px;
-    animation: label-move-blur $transition-timing*5 ease-out;
+    animation: label-move-blur $transition-selection-timing;
   }
 
   &-appearance-legacy &-infix {
@@ -135,7 +136,7 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
     }
 
     .mat-form-field-label {
-      animation: label-move-focus $transition-timing*5 ease-in $transition-timing;
+      animation: label-move-focus $transition-selection-timing linear $transition-selection-timing;
       animation-fill-mode: forwards;
     }
   }
@@ -144,7 +145,7 @@ input {
   background-color: $color-neo-lowered;
   padding: 10px;
   border-radius: $border-radius;
-  transition: all $transition-timing*4 ease-out;
+  transition: all $transition-selection-timing ease-out;
   @include neo-shadow(in);
 }
 
@@ -153,7 +154,7 @@ input {
   &-button &-container {
     border-radius: 100%;
     padding: 1em;
-    animation: neo-shadow-default $transition-timing*2;
+    animation: neo-shadow-default $transition-selection-timing;
     animation-fill-mode: forwards;
 
     .mat-radio-outer-circle,
@@ -172,7 +173,7 @@ input {
   &-checked {
     .mat-radio-container {
       background-color: $color-neo-lowered;
-      animation: neo-shadow-inset $transition-timing*2;
+      animation: neo-shadow-inset $transition-selection-timing;
       animation-fill-mode: forwards;
     }
   }
@@ -184,7 +185,7 @@ input {
   
   & &-inner-container {
     padding: $checkbox-size-adjustment;
-    animation: neo-shadow-default $transition-timing*2;
+    animation: neo-shadow-default $transition-selection-timing;
     animation-fill-mode: forwards;
   }
 
@@ -203,7 +204,7 @@ input {
 
   &-checked {
     .mat-checkbox-inner-container {
-      animation: neo-shadow-inset $transition-timing*2;
+      animation: neo-shadow-inset $transition-selection-timing;
       animation-fill-mode: forwards;
     }
   }
