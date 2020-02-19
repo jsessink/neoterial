@@ -182,6 +182,7 @@ input {
   
   & &-inner-container {
     padding: $checkbox-size-adjustment;
+    transition: all 2000ms linear;
     @include neo-shadow();
   }
 
@@ -199,7 +200,9 @@ input {
   }
 
   &-checked {
-    background: blue; // TODO: after lunch
+    .mat-checkbox-inner-container {
+      @include neo-shadow(in);
+    }
   }
 }
 
