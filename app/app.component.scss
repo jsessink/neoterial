@@ -110,14 +110,30 @@ button.mat-raised-button:not([class*='mat-elevation-z']) {
     opacity: 0;
   }
 
-  &-appearance-legacy &-label {
+  &-appearance-legacy.mat-form-field-type-mat-input &-label {
     padding-top: 0.56em;
     margin-left: 10px;
     animation: label-move-blur $transition-selection-timing;
   }
 
-  &-appearance-legacy &-infix {
+  &-appearance-legacy.mat-form-field-type-mat-input &-infix,
+  &-appearance-legacy.mat-form-field-type-mat-select &-wrapper {
     padding-bottom: 0; // Padding is added to the input for the neo shadow
+  }
+
+  &-type-mat-select {
+    border-radius: $border-radius;
+    border: $border-width-button solid $color-neo-raised;
+    background: $color-neo-raised;
+    @include neo-shadow();
+
+    .mat-form-field-wrapper {
+      padding: 0 0.5em;
+    }
+
+    .mat-form-field-infix {
+      border: none;
+    }
   }
 
   &-should-float {

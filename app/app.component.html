@@ -35,6 +35,22 @@
       No Ripple<br/><br/>
       <mat-checkbox color="primary" [disableRipple]="true">Checkborx</mat-checkbox>
     </div>
+
+    <br/><br/><br/>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <mat-select>
+          <mat-option>
+            Gooooood
+          </mat-option>
+          <mat-option>
+            Gooooood Anakin
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </mat-tab>
 
   <mat-tab label="Basic Buttons">
@@ -54,17 +70,6 @@
       <button mat-raised-button color="warn" [disableRipple]="true">Warn</button>
       <button mat-raised-button disabled>Disabled</button>
       <br/><br/>
-    </div>
-    <div>
-      <h4>Basic mat-select</h4>
-      <mat-form-field>
-        <mat-label>Favorite food</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let food of foods; let x=$index">
-            Gooooood {{ index }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
     </div>
   </mat-tab>
 
