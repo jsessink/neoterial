@@ -229,6 +229,27 @@ input {
   }
 }
 
+::ng-deep .mat-slide-toggle {
+
+  & &-thumb-container {
+    top: 50%;
+    margin-top: -10px;
+    transform: matrix(0.75, 0, 0, 0.75, 0, 0);
+  }
+
+  & &-thumb {
+    background-color: $color-neo-raised;
+    @include neo-shadow();
+  }
+
+  & &-bar {
+    height: 100%;
+    border-radius: $border-radius;
+    background-color: $color-neo-lowered;
+    @include neo-shadow(in);
+  }
+}
+
 // Animations
 @keyframes label-move-blur {
   0% {
