@@ -229,6 +229,7 @@ input {
   }
 }
 
+// Slide Toggle
 ::ng-deep .mat-slide-toggle {
 
   & &-thumb-container {
@@ -238,8 +239,8 @@ input {
   }
 
   & &-thumb {
-    background-color: $color-neo-raised;
-    @include neo-shadow();
+    background-color: darken($color-neo, 50%);
+    @include neo-shadow(in, theme($primary));
   }
 
   & &-bar {
@@ -247,6 +248,25 @@ input {
     border-radius: $border-radius;
     background-color: $color-neo-lowered;
     @include neo-shadow(in);
+  }
+
+  & {
+    &.mat-checked {
+      .mat-slide-toggle-bar {
+        .mat-slide-toggle-thumb-container {
+          transform:  matrix(0.75, 0, 0, 0.75, 0, 0) translate3d(16px, 0, 0);
+        }
+      }
+      &[color="primary"] {
+        .mat-slide-toggle-bar {
+          background-color: theme($primary);
+        }
+
+        .mat-slide-toggle-thumb {
+          background-color: $color-neo-raised;
+        }
+      }
+    }
   }
 }
 
