@@ -23,19 +23,19 @@ $transition-selection-timing: $transition-button-timing*2;
     }
     @else {
       box-shadow:
-          -2px -2px 3px 2px lighten($color-neo, 3%),
-          2px 2px 4px 1px darken($color-neo, 13%);
+          -2px -2px 3px 2px lighten($color-base, 3%),
+          2px 2px 4px 1px darken($color-base, 13%);
     }
   }
   @else if ($direction == in) {
     box-shadow:
-      1px 1px 4px darken($color-neo, 20%) inset,
-      -1px -1px 3px 1px lighten($color-neo, 17%) inset;
+      1px 1px 4px darken($color-base, 20%) inset,
+      -1px -1px 3px 1px lighten($color-base, 17%) inset;
   }
   @else if ($direction == in-focused) {
     box-shadow:
-      0.5px 0.5px 1px darken($color-neo, 30%) inset,
-      -1px -1px 2px lighten($color-neo, 20%) inset;
+      0.5px 0.5px 1px darken($color-base, 30%) inset,
+      -1px -1px 2px lighten($color-base, 20%) inset;
   }
 }
 
@@ -238,9 +238,25 @@ input {
     transform: matrix(0.75, 0, 0, 0.75, 0, 0);
   }
 
-  & &-thumb {
-    background-color: darken($color-neo, 50%);
-    @include neo-shadow(in, theme($primary));
+  & {
+    &[color="primary"] {
+      .mat-slide-toggle-thumb {
+        background-color: theme($primary);
+        @include neo-shadow(in, null, theme($primary));
+      }
+    }
+    &[color="accent"] {
+      .mat-slide-toggle-thumb {
+        background-color: theme($accent);
+        @include neo-shadow(in, null, theme($accent));
+      }
+    }
+    &[color="warn"] {
+      .mat-slide-toggle-thumb {
+        background-color: theme($warn);
+        @include neo-shadow(in, null, theme($warn));
+      }
+    }
   }
 
   & &-bar {
@@ -254,16 +270,41 @@ input {
     &.mat-checked {
       .mat-slide-toggle-bar {
         .mat-slide-toggle-thumb-container {
-          transform:  matrix(0.75, 0, 0, 0.75, 0, 0) translate3d(16px, 0, 0);
+          transform:  matrix(0.75, 0, 0, 0.75, 0, 0) translate3d(20px, 0, 0);
+
+          .mat-slide-toggle-thumb {
+            background-color: $color-neo-raised;
+          }
         }
       }
       &[color="primary"] {
         .mat-slide-toggle-bar {
           background-color: theme($primary);
+          @include neo-shadow(in, null, theme($primary));
         }
 
         .mat-slide-toggle-thumb {
-          background-color: $color-neo-raised;
+          @include neo-shadow(out, null, theme($primary));
+        }
+      }
+      &[color="accent"] {
+        .mat-slide-toggle-bar {
+          background-color: theme($accent);
+          @include neo-shadow(in, null, theme($accent));
+        }
+
+        .mat-slide-toggle-thumb {
+          @include neo-shadow(out, null, theme($accent));
+        }
+      }
+      &[color="warn"] {
+        .mat-slide-toggle-bar {
+          background-color: theme($warn);
+          @include neo-shadow(in, null, theme($warn));
+        }
+
+        .mat-slide-toggle-thumb {
+          @include neo-shadow(out, null, theme($warn));
         }
       }
     }
